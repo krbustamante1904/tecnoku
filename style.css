@@ -1,0 +1,688 @@
+/** Reset estilos **/
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/** Modo dark mode/ light mode**/
+
+/**
+antiguo upper-menu 0074fe
+
+antiguo widget-bg:
+
+**/
+:root {
+    --bg-color: #ECECEC;
+    --text-color: #202530;
+    --upper-menu: #e00000;
+    --main-menu-bg: #121418;
+    --main-menu-color: #ffffff;
+    --body-font: font-family: 'Poppins', sans-serif;
+    --widget-bg: rgb(0, 0, 0, 0.9);
+    ;
+    --widget-color: #f1f1f1;
+    --footer-bg: #171921;
+    --footer-color: #f1f1f1;
+}
+
+.dark-mode {
+    --bg-color: #202530;
+    --text-color: #ECECEC;
+    --upper-menu: #d10000;
+    --main-menu-bg: #cfcfcf;
+    --main-menu-color: #000000;
+    --body-font: font-family: 'Poppins', sans-serif;
+    --widget-bg: rgb(255, 255, 255, 0.1);
+    --widget-color: #f1f1f1;
+    --footer-bg: #171921;
+    --footer-color: #f1f1f1;
+}
+
+/** Estilos generales **/
+body {
+    background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvcsGHiJBwZx-G0i92IizDfNF57CR6uG64DFnf1BSXfq5eWYw9R-ILh4AqxBw7brvYPvoJivxMsLC90j2cYrubXBY6_Sz2OHc45YhQtdff5PqWExgXW_Up2STkS0823Jxh8LIOL9_-Dm-VjteK5jO2Gfkrk1wDpuk0XXOfwyP1QipXmd2bpLzsnYY6EbUi/s1600/TecnOku%20Background.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/** Contenedor principal **/
+.main-wrapper {
+    background: var(--bg-color);
+    position: relative;
+    overflow: hidden;
+    width: calc(1060px + 50px);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu-container {
+    z-index: 99;
+}
+
+/** Menu de arriba**/
+.upper-menu {
+    background-color: var(--upper-menu);
+    color: white;
+    width: 100%;
+    height: 31px;
+    font-size: 14px;
+}
+
+.upper-menu .left {
+    background-color: var(--upper-menu);
+    height: auto;
+    float: left;
+    width: 50%;
+}
+
+.upper-menu .left div {
+    margin-left: 15px;
+    float: left;
+    padding: 5px;
+}
+
+.upper-menu .right {
+    background-color: var(--upper-menu);
+    float: right;
+    width: 50%;
+    height: auto;
+}
+
+.upper-menu .right div {
+    float: right;
+    margin-right: 15px;
+    padding: 5px;
+}
+
+/** Header logo**/
+.main-logo {
+    padding: 25px 0;
+    width: calc(100% - 700px);
+    float: left;
+    height: auto;
+    margin: 0;
+}
+
+.main-logo img {
+    padding: 20px;
+    display: block;
+    max-height: 60px;
+    margin: 0;
+}
+
+/* ----------------- MENU PRINCIPAL ----------------- */
+
+.topnav {
+    clear: both;
+    float: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--main-menu-bg);
+    padding: 0px;
+}
+
+/* Estilos de los enlaces */
+.topnav a {
+    color: var(--main-menu-color);
+    text-align: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Hover en los enlaces */
+.topnav a:hover {
+    background-color: var(--main-menu-bg);
+    color: var(--main-menu-color);
+    border-bottom: 4px solid var(--upper-menu);
+    padding: 10px 15px !important;
+}
+
+/* Activo */
+.topnav a.active {
+    background-color: var(--upper-menu);
+    color: white;
+}
+
+#toggle-theme:hover,
+.search-button:hover {
+    background: var(--upper-menu);
+    color: white;
+}
+
+/* Botón Menú en Móvil (fa-bars) */
+.topnav .icon {
+    display: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Contenedor de Iconos a la Derecha */
+.right-icons {
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+}
+
+/* Iconos de búsqueda y tema */
+#toggle-theme,
+.search-button {
+    cursor: pointer;
+    color: var(--main-menu-color);
+    padding: 12.5px;
+}
+
+/* Buscador */
+.search-container {
+    position: absolute;
+    right: 4%;
+    clear: both;
+    width: 0;
+    opacity: 0;
+    background: white;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.search-container.open {
+    width: 96%;
+    opacity: 1;
+}
+
+.search-input {
+    width: 97%;
+    padding: 13px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+/* RESPONSIVIDAD */
+@media screen and (max-width: 600px) {
+    .topnav {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    /* Icono de menú visible en móvil */
+    .topnav .icon {
+        display: block;
+    }
+
+    /* Menú en móvil */
+    .topnav a:not(:first-child) {
+        display: none;
+    }
+
+    .topnav.responsive a {
+        width: 100%;
+        display: block;
+        text-align: left;
+    }
+
+    /* Iconos a la derecha en móvil */
+    .right-icons {
+        position: absolute;
+        right: 1px;
+    }
+
+    /* Buscador */
+    .search-container {
+        right: 11%;
+    }
+
+    .search-container.open {
+        width: 89%;
+        opacity: 1;
+    }
+
+}
+
+/** Publicaciones destacadas header**/
+.featured-wrapper {
+    width: 95%;
+    max-width: 1200px;
+    height: 362px;
+    margin: 50px auto;
+    overflow: hidden;
+    display: flex;
+    gap: 5px;
+}
+
+.featured-wrapper .principal-feeatured {
+    flex: 55%;
+    height: 100%;
+}
+
+.featured-wrapper .container-featured {
+    flex: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.principal-feeatured,
+.seccond-featured,
+.third-featured {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+}
+
+.featured-wrapper img {
+    transition: width 1s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+}
+
+.featured-wrapper img:hover {
+    width: 110%;
+}
+
+.text-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.target {
+    font-size: 13px;
+    background-color: var(--upper-menu);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 2px 15px;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.post-data span {
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.main-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.article-container {
+    width: 69%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.aside-container {
+    width: 29%;
+    float: right;
+    box-sizing: border-box;
+}
+
+.title-widget {
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--widget-bg);
+}
+
+.title-widget>h3 {
+    clear: both;
+    background-color: var(--widget-bg);
+    font-family: var(--body-font);
+    font-size: 13px;
+    color: var(--widget-color);
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 32px;
+    padding: 0 15px;
+    margin: 0;
+    width: fit-content;
+
+}
+
+.article-summary {
+    clear: both;
+    display: flex;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--widget-bg);
+}
+
+.img-article {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    flex: 2;
+    justify-content: flex-start;
+}
+
+.img-article img {
+    transition: transform 0.3s ease-in-out;
+    width: 90%;
+}
+
+.img-article img:hover {
+    transform: scale(1.1);
+    /* Aumenta el tamaño al 110% sin afectar el layout */
+}
+
+.data-article {
+    padding: 15px 0px;
+    flex: 3;
+}
+
+.data-article h2 {
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 18px;
+    color: var(--text-color);
+}
+
+.data-article .data-container span {
+    color: var(--text-color);
+    font-size: 13px;
+}
+
+.data-container {
+    padding: 10px 0px;
+}
+
+.data-article .description {
+    font-size: 15px;
+    color: var(--text-color);
+    line-height: 15px;
+}
+
+aside .title-widget {
+    margin-bottom: 5px !important;
+}
+
+.title-widget>h3 {
+    padding: 10px 17px;
+    line-height: 18px;
+}
+
+.widget-content {
+    color: var(--widget-bg);
+    color: var(--text-color);
+    padding: 15px;
+}
+
+/** MENU TABS SIMPLE **/
+/* Ocultar inputs */
+input[type="radio"] {
+    display: none;
+}
+
+/* Estilos del menú */
+.menu-horizontal {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.menu-horizontal label {
+    font-size: 14px;
+    background: var(--main-menu-bg);
+    color: var(--main-menu-color);
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Clase active aplicada con :checked */
+#tab1:checked~.menu-horizontal label[for="tab1"],
+#tab2:checked~.menu-horizontal label[for="tab2"],
+#tab3:checked~.menu-horizontal label[for="tab3"] {
+    color: white;
+    background: var(--upper-menu);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor de contenido */
+.contendor div {
+    background: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    padding: 40px;
+    display: none;
+}
+
+/* Mostrar el contenido correspondiente */
+#tab1:checked~.contendor .contenedor1,
+#tab2:checked~.contendor .contenedor2,
+#tab3:checked~.contendor .contenedor3 {
+    display: block;
+}
+
+.footer {
+    clear: both;
+    background: var(--footer-bg);
+    color: var(--footer-color);
+    box-sizing: border-box;
+    padding: 25px 25px 0px 25px;
+}
+
+.img-description-blog {
+    align-items: center;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid var(--widget-bg);
+    padding-bottom: 15px;
+}
+
+.logo-footer {
+    flex: 1;
+}
+
+.description-footer {
+    flex: 2;
+}
+
+.img-description-blog img {
+    width: 70%;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 14px;
+    padding: 15px;
+}
+
+ul.breadcrumbs {
+    padding: 15px 15px 0px 15px;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.breadcrumbs li {
+    padding: 5px;
+    list-style: none;
+    font-size: 14px;
+}
+
+.body-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 50px auto;
+    overflow: hidden;
+
+}
+
+.img-post {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.img-post img {
+    width: 100%;
+    height: auto;
+}
+
+/* Query para pantallas tablet y celular */
+@media screen and (max-width: 1030px) {
+    menu-container {
+        z-index: 99;
+    }
+
+    .main-menu,
+    .main-menu li,
+    .main-menu a,
+    .main-menu .fa,
+    .main-menu .fas {
+        background: var(--main-menu-bg);
+        color: var(--main-menu-color) !important;
+        width: 50%;
+    }
+
+    /* Contenedor para la barra de navegación en móvil */
+    .menu-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px 15px;
+        box-sizing: border-box;
+    }
+
+    /* Botón del menú hamburguesa */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 20px;
+        color: var(--main-menu-color);
+    }
+
+    /* Ocultar el menú principal en móvil por defecto */
+    .main-menu {
+        display: none;
+        position: absolute;
+        top: 0px;
+        /* Justo debajo del nav */
+        left: 0;
+        width: 50%;
+        height: 1000px;
+        background: var(--main-menu-bg);
+
+        z-index: 99;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 0 0 10px 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Cuando el menú está activo */
+    .main-menu.active {
+        display: block;
+        transform: translateY(0);
+    }
+
+    /* Opciones del menú */
+    .main-menu li {
+        padding: 12px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .main-menu li a {
+        display: contents;
+        color: var(--main-menu-color);
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Fondo con blur en la pantalla */
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 98;
+        display: none;
+    }
+
+    .menu-overlay.active {
+        display: block;
+    }
+
+    .article-container {
+        width: 100%;
+    }
+
+    .aside-container {
+        width: 100%;
+    }
+}
+
+/* Query para pantallas tablet y celular */
+@media screen and (max-width: 680px) {
+    .upper-menu {
+        width: 100%;
+    }
+
+    .upper-menu .right {
+        display: none;
+    }
+
+    .upper-menu .left {
+        width: 100%;
+    }
+
+    .main-logo {
+        width: 100%;
+        float: none;
+    }
+
+    .main-logo img {
+        padding: 20px 0;
+        max-width: 100%;
+        max-height: auto;
+        margin: 0 auto !important;
+    }
+
+    .featured-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .principal-feeatured,
+    .container-featured {
+        width: 100%;
+        flex: none;
+        height: auto;
+    }
+
+    .seccond-featured,
+    .third-featured {
+        height: auto;
+    }
+}
